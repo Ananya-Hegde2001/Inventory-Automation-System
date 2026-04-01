@@ -151,33 +151,47 @@ function Icon({ name }: { name: IconName }) {
 }
 
 function LandingPage({ navigate }: { navigate: NavigateFn }) {
+  const heroStats = [
+    { label: 'Branches Connected', value: '128' },
+    { label: 'Daily SKU Events', value: '1.9M' },
+    { label: 'Forecast Accuracy', value: '97.4%' },
+  ]
+
   return (
-    <div className="min-h-screen text-slate-700">
-      <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-slate-50/80 backdrop-blur-lg">
+    <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-canvas)] text-[var(--ink)]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-24 -top-24 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle_at_35%_35%,rgba(22,163,74,0.32),rgba(22,163,74,0.02)_62%)] blur-2xl"></div>
+        <div className="absolute right-[-8rem] top-[10rem] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle_at_55%_45%,rgba(245,158,11,0.26),rgba(245,158,11,0.03)_62%)] blur-2xl"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(248,250,252,0.75),rgba(248,250,252,0.95)_48%,rgba(248,250,252,1))]"></div>
+      </div>
+
+      <header className="sticky top-0 z-40 border-b border-[var(--line)] bg-[color:var(--glass)] backdrop-blur-xl">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
           <div className="flex items-center gap-2.5">
             <span
               aria-hidden="true"
-              className="h-7 w-7 rounded-xl bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,#38bdf8_35%,#2563eb_100%)] shadow-sm"
+              className="h-7 w-7 rounded-xl bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,#14b8a6_38%,#0f766e_100%)] shadow-md"
             ></span>
-            <span className="text-sm font-semibold tracking-wide text-slate-900">Inventory Automation System</span>
+            <span className="font-display text-sm font-semibold tracking-wide text-[var(--ink-strong)]">
+              Inventory Automation System
+            </span>
           </div>
 
           <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
-            <a className="rounded-full px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-500 hover:bg-sky-100/80 hover:text-slate-800" href="#features">
+            <a className="rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-[var(--ink-soft)] transition hover:bg-white hover:text-[var(--ink-strong)]" href="#features">
               FEATURES
             </a>
-            <a className="rounded-full px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-500 hover:bg-sky-100/80 hover:text-slate-800" href="#modules">
+            <a className="rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-[var(--ink-soft)] transition hover:bg-white hover:text-[var(--ink-strong)]" href="#modules">
               MODULES
             </a>
-            <a className="rounded-full px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-500 hover:bg-sky-100/80 hover:text-slate-800" href="#pricing">
+            <a className="rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.12em] text-[var(--ink-soft)] transition hover:bg-white hover:text-[var(--ink-strong)]" href="#pricing">
               PRICING
             </a>
           </nav>
 
           <div className="flex items-center gap-2">
             <a
-              className="rounded-full px-3 py-2 text-xs font-bold tracking-wider text-slate-500 hover:bg-slate-200/70 hover:text-slate-800"
+              className="rounded-full px-3 py-2 text-xs font-bold tracking-[0.12em] text-[var(--ink-soft)] transition hover:bg-white hover:text-[var(--ink-strong)]"
               href="/login"
               onClick={(e) => {
                 e.preventDefault()
@@ -187,7 +201,7 @@ function LandingPage({ navigate }: { navigate: NavigateFn }) {
               LOGIN
             </a>
             <a
-              className="rounded-full bg-sky-600 px-4 py-2 text-xs font-bold tracking-wide text-white shadow-lg shadow-sky-600/20 transition hover:bg-sky-500"
+              className="rounded-full bg-[var(--action)] px-4 py-2 text-xs font-bold tracking-[0.12em] text-white shadow-lg shadow-emerald-800/15 transition hover:bg-[var(--action-hover)]"
               href="#request-demo"
             >
               Request Demo
@@ -197,110 +211,135 @@ function LandingPage({ navigate }: { navigate: NavigateFn }) {
       </header>
 
       <main>
-        <section className="relative overflow-hidden scroll-mt-24 px-4 pb-16 pt-14 sm:px-6" aria-label="Hero">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            <div className="absolute -left-12 -top-8 h-72 w-72 rounded-full bg-sky-300/25 blur-3xl"></div>
-            <div className="absolute right-0 top-20 h-64 w-64 rounded-full bg-indigo-300/25 blur-3xl"></div>
-          </div>
-
-          <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <p className="inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-black tracking-[0.16em] text-sky-700">
-                TRUSTED ENTERPRISE SOLUTIONS
+        <section className="scroll-mt-24 px-4 pb-16 pt-14 sm:px-6 sm:pt-18" aria-label="Hero">
+          <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="hero-rise">
+              <p className="inline-flex rounded-full border border-emerald-200/80 bg-emerald-100/75 px-3 py-1 text-[11px] font-extrabold tracking-[0.16em] text-emerald-800">
+                RETAIL COMMAND CENTER
               </p>
-              <h1 className="mt-5 text-4xl font-black leading-[0.95] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                Centralized Retail Operations Control
+              <h1 className="font-display mt-5 text-4xl font-black leading-[0.92] tracking-[-0.03em] text-[var(--ink-strong)] sm:text-5xl lg:text-[4.15rem]">
+                Control inventory flow.
+                <span className="block text-[var(--accent-2)]">Scale every branch with confidence.</span>
               </h1>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                Manage inventory, revenue, and expenses across all branches from one platform designed for high-growth retail teams.
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-[var(--ink-soft)] sm:text-base">
+                Replace spreadsheets and fragmented tools with one real-time operations cockpit for inventory, finance, and branch execution.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a className="rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800" href="#modules">
-                  Get Started
+                <a className="rounded-full bg-[var(--ink-strong)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--ink)]" href="#modules">
+                  Explore Modules
                 </a>
                 <a
-                  className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                  className="rounded-full border border-[var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[var(--ink-strong)] transition hover:border-emerald-300 hover:bg-emerald-50"
                   href="#request-demo"
                 >
-                  Request Demo
+                  Book Live Demo
                 </a>
+              </div>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {heroStats.map((stat) => (
+                  <article key={stat.label} className="rounded-2xl border border-[var(--line)] bg-white/95 p-4 shadow-[0_18px_38px_-28px_rgba(15,23,42,0.5)]">
+                    <p className="font-display text-2xl font-extrabold text-[var(--ink-strong)]">{stat.value}</p>
+                    <p className="mt-1 text-[11px] font-bold tracking-[0.12em] text-[var(--ink-soft)]">{stat.label}</p>
+                  </article>
+                ))}
               </div>
             </div>
 
             <div className="relative">
-              <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-2xl shadow-slate-200/60 backdrop-blur">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(56,189,248,0.25),transparent_48%),radial-gradient(circle_at_75%_75%,rgba(59,130,246,0.2),transparent_48%)]"></div>
-                <div className="absolute inset-6 rounded-2xl border border-slate-200 bg-white/90">
-                  <div className="flex h-10 items-center gap-2 border-b border-slate-100 px-4">
-                    <span className="h-2 w-2 rounded-full bg-slate-300"></span>
-                    <span className="h-2 w-2 rounded-full bg-slate-300"></span>
-                    <span className="h-2 w-2 rounded-full bg-slate-300"></span>
+              <div className="hero-rise-delayed relative overflow-hidden rounded-[1.8rem] border border-[var(--line)] bg-[linear-gradient(140deg,rgba(255,255,255,0.98),rgba(240,253,250,0.92))] p-6 shadow-[0_30px_60px_-35px_rgba(6,95,70,0.6)]">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl border border-emerald-100 bg-white p-4">
+                    <p className="text-[10px] font-black tracking-[0.14em] text-emerald-700">STOCK HEALTH</p>
+                    <p className="font-display mt-2 text-2xl font-extrabold text-[var(--ink-strong)]">94.2%</p>
+                    <p className="mt-1 text-xs text-[var(--ink-soft)]">Healthy SKUs this week</p>
                   </div>
-                  <div className="grid gap-3 p-5">
-                    <span className="h-2.5 w-8/12 rounded-full bg-slate-200"></span>
-                    <span className="h-2.5 w-5/12 rounded-full bg-slate-200"></span>
-                    <span className="h-2.5 w-10/12 rounded-full bg-slate-200"></span>
-                    <span className="h-2.5 w-7/12 rounded-full bg-slate-200"></span>
+                  <div className="rounded-2xl border border-amber-100 bg-white p-4">
+                    <p className="text-[10px] font-black tracking-[0.14em] text-amber-700">AUTO REORDER</p>
+                    <p className="font-display mt-2 text-2xl font-extrabold text-[var(--ink-strong)]">312</p>
+                    <p className="mt-1 text-xs text-[var(--ink-soft)]">Triggered today</p>
+                  </div>
+                  <div className="col-span-2 rounded-2xl border border-[var(--line)] bg-white p-4">
+                    <div className="mb-3 flex items-center justify-between">
+                      <p className="text-[10px] font-black tracking-[0.14em] text-[var(--ink-soft)]">LIVE MOVEMENT</p>
+                      <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-700">SYNCED</span>
+                    </div>
+                    <div className="grid gap-2">
+                      <span className="h-2.5 w-10/12 rounded-full bg-emerald-100"></span>
+                      <span className="h-2.5 w-8/12 rounded-full bg-emerald-200/75"></span>
+                      <span className="h-2.5 w-11/12 rounded-full bg-amber-100"></span>
+                      <span className="h-2.5 w-7/12 rounded-full bg-emerald-100"></span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute right-3 top-3 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-lg">
-                <p className="text-[10px] font-bold tracking-wider text-slate-400">REVENUE</p>
-                <p className="text-sm font-extrabold text-slate-900">+24.8%</p>
+              <div className="float-card absolute -left-2 bottom-4 rounded-2xl border border-emerald-200/80 bg-white px-3 py-2 shadow-lg">
+                <p className="text-[10px] font-black tracking-[0.13em] text-emerald-700">PREDICTED SAVINGS</p>
+                <p className="font-display text-lg font-black text-[var(--ink-strong)]">$208K</p>
               </div>
 
-              <div className="absolute -bottom-2 left-3 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-lg">
-                <p className="text-[10px] font-bold tracking-wider text-slate-400">STOCK ANALYTICS</p>
-                <p className="text-sm font-extrabold text-slate-900">42,850</p>
+              <div className="float-card-delay absolute -right-2 top-4 rounded-2xl border border-amber-200/80 bg-white px-3 py-2 shadow-lg">
+                <p className="text-[10px] font-black tracking-[0.13em] text-amber-700">OUT-OF-STOCK RISK</p>
+                <p className="font-display text-lg font-black text-[var(--ink-strong)]">-38%</p>
               </div>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-10 w-full max-w-6xl rounded-2xl border border-[var(--line)] bg-white/95 px-4 py-4 sm:px-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] font-bold tracking-[0.14em] text-[var(--ink-soft)] sm:justify-between">
+              <span>POWERING MULTI-BRANCH RETAIL</span>
+              <span>REAL-TIME EVENT PIPELINES</span>
+              <span>FINANCE + INVENTORY IN ONE VIEW</span>
+              <span>24/7 OPERATIONAL VISIBILITY</span>
             </div>
           </div>
         </section>
 
         <section id="modules" className="scroll-mt-24 px-4 py-16 sm:px-6">
           <div className="mx-auto w-full max-w-6xl">
-            <h2 className="text-center text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              Built for Multi-Branch Retail Operations
+            <h2 className="font-display text-center text-3xl font-extrabold tracking-tight text-[var(--ink-strong)] sm:text-4xl">
+              A Modular Stack For Fast-Moving Retail Teams
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-600 sm:text-base">
-              Modular tools that simplify complex branch workflows and help your team scale with confidence.
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[var(--ink-soft)] sm:text-base">
+              Launch only what you need today, then scale operations, pricing, and forecasting as new branches come online.
             </p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {moduleCards.map((card) => (
-                <article key={card.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200/50">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100 text-sky-700">
+              {moduleCards.map((card, index) => (
+                <article key={card.title} className="group rounded-3xl border border-[var(--line)] bg-white p-6 shadow-[0_20px_34px_-30px_rgba(15,23,42,0.75)] transition hover:-translate-y-1 hover:border-emerald-300/80 hover:shadow-[0_24px_46px_-28px_rgba(15,23,42,0.5)]" style={{ animationDelay: `${index * 90}ms` }}>
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 transition group-hover:bg-emerald-200">
                     <Icon name={card.icon} />
                   </div>
-                  <h3 className="mt-4 text-base font-bold text-slate-900">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                  <h3 className="font-display mt-4 text-lg font-bold text-[var(--ink-strong)]">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{card.description}</p>
+                  <p className="mt-4 text-xs font-bold tracking-[0.14em] text-emerald-700">VIEW MODULE</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="features" className="scroll-mt-24 border-y border-slate-200/90 bg-white/80 px-4 py-16 sm:px-6">
+        <section id="features" className="scroll-mt-24 border-y border-[var(--line)] bg-white/80 px-4 py-16 sm:px-6">
           <div className="mx-auto w-full max-w-6xl">
-            <h2 className="text-center text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              Powerful Features for Retail Teams
+            <h2 className="font-display text-center text-3xl font-extrabold tracking-tight text-[var(--ink-strong)] sm:text-4xl">
+              Built For Execution, Not Just Reporting
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-slate-600 sm:text-base">
-              Centralized precision, role-based access, and highly visible insights from stock to settlement.
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[var(--ink-soft)] sm:text-base">
+              Move from insight to action faster with roles, sync, and automation designed for real operational pressure.
             </p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {featureCards.map((card) => (
-                <article key={card.title} className="rounded-2xl border border-slate-200 bg-slate-50/60 p-5">
+                <article key={card.title} className="rounded-2xl border border-[var(--line)] bg-[linear-gradient(160deg,rgba(255,255,255,0.95),rgba(240,253,250,0.82))] p-5 shadow-[0_18px_30px_-30px_rgba(15,23,42,0.8)]">
                   <div className="flex items-start gap-3">
-                    <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-sky-700">
+                    <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800">
                       <Icon name={card.icon} />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900">{card.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                      <h3 className="font-display text-base font-bold text-[var(--ink-strong)]">{card.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">{card.description}</p>
                     </div>
                   </div>
                 </article>
@@ -309,82 +348,87 @@ function LandingPage({ navigate }: { navigate: NavigateFn }) {
           </div>
         </section>
 
-        <section className="px-4 py-16 sm:px-6" aria-label="Visibility">
-          <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-2">
-            <div className="relative h-80">
-              <div className="absolute left-0 top-10 h-44 w-10/12 rounded-3xl border border-slate-200 bg-linear-to-b from-sky-100 to-white shadow-md"></div>
-              <div className="absolute left-[18%] top-0 h-36 w-7/12 rounded-3xl border border-slate-200 bg-linear-to-b from-slate-100 to-white shadow-md"></div>
-              <div className="absolute bottom-0 left-2 h-28 w-5/12 rounded-3xl border border-slate-200 bg-linear-to-b from-indigo-100 to-white shadow-md"></div>
-            </div>
+        <section id="pricing" className="scroll-mt-24 px-4 py-16 sm:px-6" aria-label="Pricing">
+          <div className="mx-auto w-full max-w-6xl">
+            <h2 className="font-display text-center text-3xl font-extrabold tracking-tight text-[var(--ink-strong)] sm:text-4xl">
+              Pick The Rollout Pace That Fits Your Team
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[var(--ink-soft)] sm:text-base">
+              Start with a branch pilot or deploy globally. Every plan includes core inventory intelligence and onboarding support.
+            </p>
 
-            <div>
-              <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                Real-time visibility across your network
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                Drill down from branch-level performance to SKU-level movement in seconds and act on issues before they become losses.
-              </p>
-              <ul className="mt-6 space-y-3">
-                <li className="flex items-start gap-3 text-sm font-medium text-slate-700">
-                  <span className="mt-0.5 h-5 w-5 rounded-full border border-sky-200 bg-sky-100"></span>
-                  Consolidated financial snapshots
-                </li>
-                <li className="flex items-start gap-3 text-sm font-medium text-slate-700">
-                  <span className="mt-0.5 h-5 w-5 rounded-full border border-sky-200 bg-sky-100"></span>
-                  Automated inventory reordering
-                </li>
-                <li className="flex items-start gap-3 text-sm font-medium text-slate-700">
-                  <span className="mt-0.5 h-5 w-5 rounded-full border border-sky-200 bg-sky-100"></span>
-                  Zero-latency data synchronization
-                </li>
-              </ul>
+            <div className="mt-8 grid gap-4 lg:grid-cols-3">
+              <article className="rounded-3xl border border-[var(--line)] bg-white p-6">
+                <p className="text-xs font-black tracking-[0.14em] text-[var(--ink-soft)]">STARTER</p>
+                <h3 className="font-display mt-3 text-2xl font-extrabold text-[var(--ink-strong)]">$149/mo</h3>
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">For 1-2 branches</p>
+                <a href="#request-demo" className="mt-5 inline-flex rounded-full border border-[var(--line)] px-4 py-2 text-xs font-bold tracking-[0.12em] text-[var(--ink-strong)] transition hover:bg-emerald-50">
+                  START PILOT
+                </a>
+              </article>
+
+              <article className="rounded-3xl border border-emerald-300 bg-[linear-gradient(180deg,rgba(236,253,245,0.9),rgba(255,255,255,1))] p-6 shadow-[0_22px_40px_-28px_rgba(6,95,70,0.75)]">
+                <p className="text-xs font-black tracking-[0.14em] text-emerald-700">GROWTH</p>
+                <h3 className="font-display mt-3 text-2xl font-extrabold text-[var(--ink-strong)]">$329/mo</h3>
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">For scaling retail networks</p>
+                <a href="#request-demo" className="mt-5 inline-flex rounded-full bg-[var(--action)] px-4 py-2 text-xs font-bold tracking-[0.12em] text-white transition hover:bg-[var(--action-hover)]">
+                  MOST POPULAR
+                </a>
+              </article>
+
+              <article className="rounded-3xl border border-[var(--line)] bg-white p-6">
+                <p className="text-xs font-black tracking-[0.14em] text-[var(--ink-soft)]">ENTERPRISE</p>
+                <h3 className="font-display mt-3 text-2xl font-extrabold text-[var(--ink-strong)]">Custom</h3>
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">Dedicated integrations and SLA</p>
+                <a href="#request-demo" className="mt-5 inline-flex rounded-full border border-[var(--line)] px-4 py-2 text-xs font-bold tracking-[0.12em] text-[var(--ink-strong)] transition hover:bg-emerald-50">
+                  CONTACT SALES
+                </a>
+              </article>
             </div>
           </div>
         </section>
 
-        <div id="pricing" className="scroll-mt-24" aria-hidden="true"></div>
-
         <section id="request-demo" className="scroll-mt-24 px-4 pb-16 sm:px-6" aria-label="Call to action">
-          <div className="mx-auto w-full max-w-6xl rounded-3xl bg-linear-to-br from-sky-700 via-blue-700 to-indigo-700 px-6 py-12 text-center text-white shadow-2xl shadow-blue-900/20 sm:px-12">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Run all branch operations from one system
+          <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-[1.9rem] border border-emerald-300/70 bg-[linear-gradient(140deg,#065f46,#0f766e,#115e59)] px-6 py-12 text-center text-white shadow-[0_30px_68px_-38px_rgba(6,95,70,0.9)] sm:px-12">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Ready To Run Every Branch From One Intelligent Layer?
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-sm text-sky-100 sm:text-base">
-              Built for growing retail businesses. Replace manual coordination with one shared source of truth.
+            <p className="mx-auto mt-4 max-w-3xl text-sm text-emerald-100 sm:text-base">
+              See a live walkthrough tailored to your current stack, branch structure, and inventory process.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <a className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100" href="#start-demo">
+              <a className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-emerald-900 transition hover:bg-emerald-50" href="#start-demo">
                 Start Free Demo
               </a>
               <a className="rounded-full border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20" href="#contact-sales">
-                Contact Sales
+                Talk To Specialist
               </a>
             </div>
           </div>
         </section>
 
-        <footer className="border-t border-slate-200 bg-white/80 px-4 pb-8 pt-12 sm:px-6">
+        <footer className="border-t border-[var(--line)] bg-white/80 px-4 pb-8 pt-12 sm:px-6">
           <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.1fr_1fr]">
             <div>
               <div className="flex items-center gap-2.5">
                 <span
                   aria-hidden="true"
-                  className="h-7 w-7 rounded-xl bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,#38bdf8_35%,#2563eb_100%)] shadow-sm"
+                  className="h-7 w-7 rounded-xl bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,#14b8a6_38%,#0f766e_100%)] shadow-sm"
                 ></span>
-                <span className="text-sm font-semibold tracking-wide text-slate-900">Inventory Automation System</span>
+                <span className="font-display text-sm font-semibold tracking-wide text-[var(--ink-strong)]">Inventory Automation System</span>
               </div>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-600">
-                The intelligent operating system for modern retail. Centralize inventory, revenue, and operational control from one dashboard.
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--ink-soft)]">
+                The operating layer for modern retail teams that need precision, speed, and confidence at scale.
               </p>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-3">
               {footerColumns.map((column) => (
                 <div key={column.heading}>
-                  <h3 className="text-xs font-extrabold tracking-[0.14em] text-slate-500">{column.heading}</h3>
-                  <div className="mt-3 space-y-2.5 text-sm text-slate-600">
+                  <h3 className="text-xs font-extrabold tracking-[0.14em] text-[var(--ink-soft)]">{column.heading}</h3>
+                  <div className="mt-3 space-y-2.5 text-sm text-[var(--ink-soft)]">
                     {column.links.map((link) => (
-                      <a key={link} className="block hover:text-slate-900" href="#0">
+                      <a key={link} className="block transition hover:text-[var(--ink-strong)]" href="#0">
                         {link}
                       </a>
                     ))}
@@ -394,16 +438,16 @@ function LandingPage({ navigate }: { navigate: NavigateFn }) {
             </div>
           </div>
 
-          <div className="mx-auto mt-8 flex w-full max-w-6xl flex-col items-start justify-between gap-3 border-t border-slate-200 pt-5 text-xs text-slate-500 sm:flex-row sm:items-center">
+          <div className="mx-auto mt-8 flex w-full max-w-6xl flex-col items-start justify-between gap-3 border-t border-[var(--line)] pt-5 text-xs text-[var(--ink-soft)] sm:flex-row sm:items-center">
             <span>Copyright 2026 Inventory Automation System. All rights reserved.</span>
             <div className="flex items-center gap-4">
-              <a className="hover:text-slate-900" href="#terms">
+              <a className="transition hover:text-[var(--ink-strong)]" href="#terms">
                 Terms of Service
               </a>
-              <a className="hover:text-slate-900" href="#privacy">
+              <a className="transition hover:text-[var(--ink-strong)]" href="#privacy">
                 Privacy Policy
               </a>
-              <a className="hover:text-slate-900" href="#security">
+              <a className="transition hover:text-[var(--ink-strong)]" href="#security">
                 Security
               </a>
             </div>
@@ -412,7 +456,7 @@ function LandingPage({ navigate }: { navigate: NavigateFn }) {
       </main>
 
       <a
-        className="fixed bottom-5 right-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-sky-600 text-white shadow-lg shadow-sky-700/30 transition hover:bg-sky-500"
+        className="fixed bottom-5 right-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[var(--action)] text-white shadow-lg shadow-emerald-800/30 transition hover:bg-[var(--action-hover)]"
         href="#support"
         aria-label="Support chat"
       >
